@@ -70,11 +70,24 @@ export const useAuthStore = defineStore('auth', () => {
     return translations[message] || message
   }
 
+  async function refreshUser(): Promise<void> {
+    if (!token.value) return
+    try {
+      const data: any = await $fetch(`${config.public.apiBase}/auth/me`, {
+        headers: { Authorization: `Bearer ${token.value}` }
+      })
+      user.value = data
+    } catch (error) {
+      // Token invalide, déconnexion
+      logout()
+    }
+  }
+
   function logout() {
     token.value = null
     user.value = null
     navigateTo('/')
   }
 
-  return { token, user, isAuthenticated, login, register, loginWithGoogle, logout }
+  return { token, user, isAuthenticated, login, register, loginWithGoogle, refreshUser, logout }
 })

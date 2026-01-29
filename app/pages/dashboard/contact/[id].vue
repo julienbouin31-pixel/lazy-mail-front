@@ -1,12 +1,25 @@
 <template>
   <div class="min-h-screen bg-gray-50">
-    <header class="bg-white border-b border-gray-200 sticky top-0 z-10">
-      <div class="max-w-4xl mx-auto px-6 h-16 flex items-center gap-4">
-        <NuxtLink to="/dashboard" class="text-gray-400 hover:text-black transition">← Retour</NuxtLink>
-        <div class="h-6 w-px bg-gray-200"></div>
-        <div class="font-bold text-lg" v-if="contact">{{ contact.name }} <span class="font-normal text-gray-400 text-sm">({{ contact.email }})</span></div>
+    <AppHeader />
+
+    <!-- Sub-header contact -->
+    <div class="bg-white border-b border-gray-200">
+      <div class="max-w-4xl mx-auto px-6 h-12 flex items-center gap-4">
+        <NuxtLink to="/dashboard" class="text-gray-400 hover:text-black transition text-sm">← Retour</NuxtLink>
+        <div class="h-4 w-px bg-gray-200"></div>
+        <div class="font-semibold text-sm" v-if="contact">{{ contact.name }} <span class="font-normal text-gray-400">({{ contact.email }})</span></div>
       </div>
-    </header>
+    </div>
+
+    <!-- Error toast -->
+    <div v-if="error" class="fixed top-4 right-4 bg-red-600 text-white px-4 py-3 rounded-lg shadow-lg flex items-center gap-3 z-50 animate-slide-in">
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+        <circle cx="12" cy="12" r="10"/>
+        <line x1="15" y1="9" x2="9" y2="15"/>
+        <line x1="9" y1="9" x2="15" y2="15"/>
+      </svg>
+      <span class="text-sm font-medium">{{ error }}</span>
+    </div>
 
     <main class="max-w-4xl mx-auto px-6 py-8" v-if="contact">
       
@@ -45,9 +58,28 @@
         <div v-else class="space-y-4">
           <div v-for="snippet in snippets" :key="snippet.id" class="bg-white border border-gray-200 rounded-lg p-4 group hover:border-gray-300 transition relative">
             <pre class="whitespace-pre-wrap text-sm text-gray-600 font-sans leading-relaxed">{{ snippet.content }}</pre>
-            
-            <button 
-              @click="deleteSnippet(snippet.id)"
+
+            <!-- Delete confirmation -->
+            <div v-if="deletingId === snippet.id" class="absolute inset-0 bg-white/95 backdrop-blur-sm rounded-lg flex items-center justify-center gap-3">
+              <span class="text-sm text-gray-600">Supprimer ?</span>
+              <button
+                @click="confirmDelete(snippet.id)"
+                class="px-3 py-1.5 bg-red-600 text-white text-sm font-medium rounded-md hover:bg-red-700 transition"
+              >
+                Confirmer
+              </button>
+              <button
+                @click="deletingId = null"
+                class="px-3 py-1.5 bg-gray-100 text-gray-600 text-sm font-medium rounded-md hover:bg-gray-200 transition"
+              >
+                Annuler
+              </button>
+            </div>
+
+            <!-- Delete button -->
+            <button
+              v-else
+              @click="deletingId = snippet.id"
               class="absolute top-2 right-2 p-1.5 text-gray-300 hover:text-red-600 hover:bg-red-50 rounded-md transition opacity-0 group-hover:opacity-100"
               title="Supprimer"
             >
@@ -71,6 +103,8 @@ const contactId = route.params.id
 // État local pour le formulaire
 const newSnippetContent = ref('')
 const submitting = ref(false)
+const deletingId = ref(null)
+const error = ref('')
 
 // 1. Charger le Contact
 const { data: contact } = await useFetch(`${config.public.apiBase}/contacts/${contactId}`, {
@@ -85,8 +119,9 @@ const { data: snippets, pending: pendingSnippets, refresh: refreshSnippets } = a
 // Action: Ajouter
 async function addSnippet() {
   if (!newSnippetContent.value.trim()) return
+  error.value = ''
   submitting.value = true
-  
+
   try {
     await $fetch(`${config.public.apiBase}/snippets`, {
       method: 'POST',
@@ -99,23 +134,43 @@ async function addSnippet() {
     newSnippetContent.value = ''
     refreshSnippets()
   } catch (err) {
-    alert('Erreur lors de l\'ajout')
+    error.value = 'Erreur lors de l\'ajout'
+    setTimeout(() => error.value = '', 3000)
   } finally {
     submitting.value = false
   }
 }
 
-async function deleteSnippet(id) {
-  if(!confirm('Supprimer cet exemple ?')) return
-  
+async function confirmDelete(id) {
+  error.value = ''
   try {
     await $fetch(`${config.public.apiBase}/snippets/${id}`, {
       method: 'DELETE',
       headers: { Authorization: `Bearer ${auth.token}` }
     })
+    deletingId.value = null
     refreshSnippets()
   } catch (err) {
-    alert('Impossible de supprimer')
+    deletingId.value = null
+    error.value = 'Impossible de supprimer'
+    setTimeout(() => error.value = '', 3000)
   }
 }
 </script>
+
+<style scoped>
+.animate-slide-in {
+  animation: slideIn 0.3s ease;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(100px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+</style>

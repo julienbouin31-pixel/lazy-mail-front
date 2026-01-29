@@ -1,17 +1,6 @@
 <template>
   <div class="min-h-screen bg-white">
-    <!-- Navigation -->
-    <nav class="border-b border-gray-100 py-4 sticky top-0 bg-white/80 backdrop-blur-sm z-50">
-      <div class="max-w-5xl mx-auto px-6 flex justify-between items-center">
-        <div class="font-bold text-xl tracking-tight">LazyMail.</div>
-        <div class="space-x-4">
-          <NuxtLink to="/login" class="text-sm font-medium hover:underline">Connexion</NuxtLink>
-          <NuxtLink to="/register" class="text-sm font-medium bg-black text-white px-4 py-2 rounded-md hover:bg-gray-800 transition">
-            S'inscrire
-          </NuxtLink>
-        </div>
-      </div>
-    </nav>
+    <AppHeader />
 
     <!-- Hero Section -->
     <section class="max-w-4xl mx-auto px-6 pt-24 pb-20 text-center">
@@ -209,7 +198,7 @@
           <div class="bg-white rounded-xl p-6 border border-gray-100">
             <h3 class="font-semibold mb-2">C'est vraiment gratuit ?</h3>
             <p class="text-gray-600 text-sm leading-relaxed">
-              Le plan gratuit permet 2 contacts. Pour un nombre illimité de contacts, passez au plan Premium.
+              Le plan gratuit permet 1 contact. Pour un nombre illimité de contacts, passez au plan PRO à 7€/mois.
             </p>
           </div>
         </div>
@@ -229,8 +218,8 @@
             </svg>
             Installer l'extension gratuite
           </a>
-          <NuxtLink to="/register" class="px-8 py-3.5 rounded-xl font-medium text-base border border-gray-200 hover:border-gray-300 hover:bg-gray-50 transition-all">
-            Créer un compte
+          <NuxtLink to="/pricing" class="px-8 py-3.5 rounded-xl font-medium text-base border border-gray-200 hover:border-gray-300 hover:bg-gray-50 transition-all">
+            Voir les tarifs
           </NuxtLink>
         </div>
       </div>

@@ -1,14 +1,36 @@
 <template>
   <div class="min-h-screen bg-gray-50">
-    <header class="bg-white border-b border-gray-200 sticky top-0 z-10">
-      <div class="max-w-6xl mx-auto px-6 h-16 flex justify-between items-center">
-        <div class="font-bold text-lg tracking-tight">LazyMail <span class="text-gray-400 font-normal">/ Config</span></div>
-        <div class="flex items-center gap-4">
-          <span class="text-sm text-gray-500 font-mono">{{ user?.email }}</span>
-          <button @click="auth.logout()" class="text-sm font-medium hover:text-red-600">Déconnexion</button>
+    <AppHeader />
+
+    <!-- Bannière annulation en cours -->
+    <div v-if="user?.cancelAtPeriodEnd && user?.subscriptionEndDate" class="bg-amber-500 text-white">
+      <div class="max-w-6xl mx-auto px-6 py-3 flex items-center justify-between">
+        <div class="flex items-center gap-3">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L4.082 16.5c-.77.833.192 2.5 1.732 2.5z" />
+          </svg>
+          <span class="text-sm font-medium">Votre abonnement PRO se termine le {{ formatDate(user.subscriptionEndDate) }}. Vous pouvez le réactiver à tout moment.</span>
         </div>
+        <NuxtLink to="/pricing" class="bg-white text-amber-600 px-4 py-1.5 rounded-lg text-sm font-semibold hover:bg-gray-100 transition">
+          Réactiver
+        </NuxtLink>
       </div>
-    </header>
+    </div>
+
+    <!-- Bannière upgrade pour FREE -->
+    <div v-else-if="user?.plan !== 'pro'" class="bg-gradient-to-r from-purple-600 to-indigo-600 text-white">
+      <div class="max-w-6xl mx-auto px-6 py-3 flex items-center justify-between">
+        <div class="flex items-center gap-3">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+          </svg>
+          <span class="text-sm font-medium">Plan gratuit : 1 contact max. Passez à PRO pour des contacts illimités !</span>
+        </div>
+        <NuxtLink to="/pricing" class="bg-white text-purple-600 px-4 py-1.5 rounded-lg text-sm font-semibold hover:bg-gray-100 transition">
+          Voir les offres
+        </NuxtLink>
+      </div>
+    </div>
 
     <main class="max-w-6xl mx-auto px-6 py-8">
       <div class="flex justify-between items-end mb-8">
@@ -71,4 +93,27 @@ const { user } = storeToRefs(auth)
 const { data: contacts, pending } = await useFetch(`${config.public.apiBase}/contacts`, {
   headers: { Authorization: `Bearer ${auth.token}` }
 })
+
+// Sync subscription status from Stripe (handles return from Portal without webhooks)
+onMounted(async () => {
+  if (auth.user?.plan === 'pro' && auth.token) {
+    console.log('[dashboard] Syncing subscription from Stripe...')
+    try {
+      const result = await $fetch(`${config.public.apiBase}/stripe/sync-subscription`, {
+        method: 'POST',
+        headers: { Authorization: `Bearer ${auth.token}` }
+      })
+      console.log('[dashboard] Sync result:', result)
+      await auth.refreshUser()
+    } catch (e) {
+      console.error('[dashboard] Sync failed:', e)
+    }
+  } else {
+    console.log('[dashboard] Skipping sync — plan:', auth.user?.plan, 'token:', !!auth.token)
+  }
+})
+
+function formatDate(date) {
+  return new Date(date).toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' })
+}
 </script>

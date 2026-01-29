@@ -101,6 +101,9 @@ function redirectAfterLogin() {
     // Use window.location.href for full page reload to trigger content script injection
     const userParam = encodeURIComponent(JSON.stringify(auth.user))
     window.location.href = `/auth/extension-callback#token=${auth.token}&user=${userParam}`
+  } else if (route.query.redirect) {
+    // Redirect to the specified page after login
+    navigateTo(String(route.query.redirect))
   } else {
     navigateTo('/dashboard')
   }
