@@ -84,6 +84,12 @@
 </template>
 
 <script setup>
+useSeoMeta({
+  title: 'Connexion — Fit my mail',
+  description: 'Connectez-vous à Fit my mail pour générer des réponses email dans votre style.',
+  robots: 'noindex, nofollow',
+})
+
 const route = useRoute()
 const auth = useAuthStore()
 const { signInWithGoogle, loading: googleLoading } = useGoogleAuth()

@@ -236,3 +236,38 @@
     </footer>
   </div>
 </template>
+
+<script setup>
+useSeoMeta({
+  title: 'Fit my mail — Ne répondez plus jamais à vos emails',
+  description: 'Fit my mail apprend votre style d\'écriture et rédige vos réponses email automatiquement. Extension Chrome gratuite pour Gmail. Arrêtez de taper, commencez à valider.',
+  ogTitle: 'Fit my mail — Ne répondez plus jamais à vos emails',
+  ogDescription: 'L\'IA qui apprend votre style d\'écriture et rédige vos réponses email. Extension Chrome gratuite pour Gmail.',
+  ogUrl: 'https://fitmymail.com',
+  twitterTitle: 'Fit my mail — Ne répondez plus jamais à vos emails',
+  twitterDescription: 'L\'IA qui apprend votre style d\'écriture et rédige vos réponses email. Extension Chrome gratuite pour Gmail.',
+})
+
+useHead({
+  script: [
+    {
+      type: 'application/ld+json',
+      innerHTML: JSON.stringify({
+        '@context': 'https://schema.org',
+        '@type': 'SoftwareApplication',
+        name: 'Fit my mail',
+        applicationCategory: 'ProductivityApplication',
+        operatingSystem: 'Chrome',
+        description: 'Extension Chrome qui apprend votre style d\'écriture et rédige vos réponses email automatiquement sur Gmail.',
+        offers: {
+          '@type': 'Offer',
+          price: '0',
+          priceCurrency: 'EUR',
+          description: 'Plan gratuit avec 1 contact'
+        },
+        aggregateRating: undefined
+      })
+    }
+  ]
+})
+</script>

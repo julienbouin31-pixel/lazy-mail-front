@@ -98,6 +98,12 @@
 </template>
 
 <script setup>
+useSeoMeta({
+  title: 'Créer un compte — Fit my mail',
+  description: 'Inscrivez-vous gratuitement à Fit my mail. L\'IA qui rédige vos réponses email dans votre style.',
+  robots: 'noindex, nofollow',
+})
+
 const route = useRoute()
 const auth = useAuthStore()
 const { signInWithGoogle, loading: googleLoading } = useGoogleAuth()

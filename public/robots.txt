@@ -1,2 +1,7 @@
 User-Agent: *
-Disallow:
+Allow: /
+Disallow: /dashboard
+Disallow: /auth/
+Disallow: /payment/
+
+Sitemap: https://fitmymail.com/sitemap.xml

@@ -150,6 +150,14 @@
 </template>
 
 <script setup>
+useSeoMeta({
+  title: 'Tarifs — Fit my mail',
+  description: 'Plan gratuit avec 1 contact ou Premium à 7€/mois pour des contacts illimités. Générez des réponses email dans votre style avec Fit my mail.',
+  ogTitle: 'Tarifs — Fit my mail',
+  ogDescription: 'Plan gratuit ou Premium à 7€/mois. Générez des réponses email dans votre style.',
+  ogUrl: 'https://fitmymail.com/pricing',
+})
+
 const auth = useAuthStore()
 const config = useRuntimeConfig()
 const loading = ref(false)

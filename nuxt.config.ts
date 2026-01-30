@@ -13,8 +13,28 @@ export default defineNuxtConfig({
   app: {
     head: {
       title: 'Fit my mail',
+      htmlAttrs: { lang: 'fr' },
+      meta: [
+        { charset: 'utf-8' },
+        { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+        { name: 'description', content: 'Fit my mail apprend votre style d\'écriture et rédige vos réponses email automatiquement. Extension Chrome gratuite pour Gmail.' },
+        { name: 'author', content: 'Fit my mail' },
+        // Open Graph
+        { property: 'og:type', content: 'website' },
+        { property: 'og:site_name', content: 'Fit my mail' },
+        { property: 'og:locale', content: 'fr_FR' },
+        { property: 'og:title', content: 'Fit my mail — Ne répondez plus jamais à vos emails' },
+        { property: 'og:description', content: 'L\'IA qui apprend votre style d\'écriture et rédige vos réponses email. Extension Chrome gratuite pour Gmail.' },
+        { property: 'og:url', content: 'https://fitmymail.com' },
+        // Twitter Card
+        { name: 'twitter:card', content: 'summary_large_image' },
+        { name: 'twitter:title', content: 'Fit my mail — Ne répondez plus jamais à vos emails' },
+        { name: 'twitter:description', content: 'L\'IA qui apprend votre style d\'écriture et rédige vos réponses email. Extension Chrome gratuite pour Gmail.' },
+      ],
       link: [
-        { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap' }
+        { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap' },
+        { rel: 'canonical', href: 'https://fitmymail.com' },
+        { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
       ],
       script: [
         { src: 'https://accounts.google.com/gsi/client', async: true },
