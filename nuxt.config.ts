@@ -6,7 +6,7 @@ export default defineNuxtConfig({
   ],
   runtimeConfig: {
     public: {
-      apiBase: process.env.NUXT_PUBLIC_API_BASE || 'http://127.0.0.1:3000',
+      apiBase: process.env.NUXT_PUBLIC_API_BASE || 'https://lazy-mail-back-production.up.railway.app',
       googleClientId: process.env.NUXT_PUBLIC_GOOGLE_CLIENT_ID || ''
     }
   },
