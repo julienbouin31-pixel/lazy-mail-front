@@ -21,8 +21,26 @@
       <span class="text-sm font-medium">{{ error }}</span>
     </div>
 
-    <main class="max-w-4xl mx-auto px-6 py-8" v-if="contact">
-      
+    <!-- Contact locké (Forbidden) -->
+    <main v-if="contactLocked" class="max-w-4xl mx-auto px-6 py-8">
+      <div class="text-center py-20">
+        <div class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-6">
+          <svg class="w-8 h-8 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+          </svg>
+        </div>
+        <h3 class="text-lg font-semibold mb-2">Contact bloqué</h3>
+        <p class="text-gray-500 text-sm max-w-md mx-auto mb-6">
+          Ce contact est bloqué car votre plan gratuit est limité à 1 contact. Passez à PRO pour débloquer tous vos contacts.
+        </p>
+        <NuxtLink to="/pricing" class="inline-flex items-center gap-2 bg-black text-white px-5 py-2.5 rounded-lg font-medium hover:bg-gray-800 transition">
+          Passer à PRO
+        </NuxtLink>
+      </div>
+    </main>
+
+    <main class="max-w-4xl mx-auto px-6 py-8" v-else-if="contact">
+
       <section class="bg-white rounded-xl border border-gray-200 p-6 mb-8 shadow-sm">
         <h2 class="font-bold text-lg mb-4">Ajouter un exemple de style</h2>
         <p class="text-sm text-gray-500 mb-4">Collez ici un email que vous avez déjà envoyé à ce contact. L'IA s'en servira pour imiter votre ton.</p>
@@ -105,15 +123,22 @@ const newSnippetContent = ref('')
 const submitting = ref(false)
 const deletingId = ref(null)
 const error = ref('')
+const contactLocked = ref(false)
 
 // 1. Charger le Contact
-const { data: contact } = await useFetch(`${config.public.apiBase}/contacts/${contactId}`, {
+const { data: contact, error: contactError } = await useFetch(`${config.public.apiBase}/contacts/${contactId}`, {
   headers: { Authorization: `Bearer ${auth.token}` }
 })
 
-// 2. Charger les Snippets du contact
+// Détecter si le contact est locké (403 Forbidden)
+if (contactError.value?.statusCode === 403) {
+  contactLocked.value = true
+}
+
+// 2. Charger les Snippets du contact (seulement si pas locké)
 const { data: snippets, pending: pendingSnippets, refresh: refreshSnippets } = await useFetch(`${config.public.apiBase}/snippets/contact/${contactId}`, {
-  headers: { Authorization: `Bearer ${auth.token}` }
+  headers: { Authorization: `Bearer ${auth.token}` },
+  immediate: !contactLocked.value
 })
 
 // Action: Ajouter

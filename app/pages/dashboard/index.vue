@@ -32,6 +32,35 @@
       </div>
     </div>
 
+    <!-- Modal sélection contact actif -->
+    <div v-if="showSelectModal" class="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4">
+      <div class="bg-white rounded-2xl max-w-md w-full p-6 shadow-xl">
+        <h2 class="text-lg font-bold mb-2">Choisissez votre contact actif</h2>
+        <p class="text-sm text-gray-500 mb-6">Votre plan gratuit est limité à 1 contact. Les autres seront bloqués mais pas supprimés. Passez à PRO pour tous les débloquer.</p>
+        <div class="space-y-3 mb-6">
+          <button
+            v-for="contact in contacts"
+            :key="contact.id"
+            @click="selectActiveContact(contact.id)"
+            :disabled="settingActive"
+            class="w-full flex items-center gap-4 p-4 rounded-xl border-2 transition hover:border-black"
+            :class="selectedContactId === contact.id ? 'border-black bg-gray-50' : 'border-gray-200'"
+          >
+            <div class="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center font-bold text-gray-700 border border-gray-200 shrink-0">
+              {{ contact.name.charAt(0).toUpperCase() }}
+            </div>
+            <div class="text-left">
+              <div class="font-semibold text-sm">{{ contact.name }}</div>
+              <div class="text-xs text-gray-500 font-mono">{{ contact.email }}</div>
+            </div>
+          </button>
+        </div>
+        <NuxtLink to="/pricing" class="block text-center text-sm text-purple-600 font-medium hover:underline">
+          Passer à PRO pour tous les débloquer
+        </NuxtLink>
+      </div>
+    </div>
+
     <main class="max-w-6xl mx-auto px-6 py-8">
       <div class="flex justify-between items-end mb-8">
         <div>
@@ -61,23 +90,39 @@
       </div>
 
       <div v-else class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-        <NuxtLink 
-          v-for="contact in contacts" 
-          :key="contact.id" 
-          :to="`/dashboard/contact/${contact.id}`"
-          class="bg-white p-6 rounded-xl border border-gray-200 hover:border-black transition duration-200 cursor-pointer group shadow-sm hover:shadow-md block"
+        <!-- Contact actif (non-locké) -->
+        <NuxtLink
+          v-for="contact in contacts"
+          :key="contact.id"
+          :to="contact.locked ? undefined : `/dashboard/contact/${contact.id}`"
+          :class="[
+            'p-6 rounded-xl border transition duration-200 block',
+            contact.locked
+              ? 'bg-gray-50 border-gray-200 opacity-60 cursor-not-allowed'
+              : 'bg-white border-gray-200 hover:border-black cursor-pointer group shadow-sm hover:shadow-md'
+          ]"
+          @click.prevent="contact.locked && showLockedMessage()"
         >
           <div class="flex justify-between items-start mb-4">
-            <div class="w-12 h-12 bg-gray-50 rounded-full flex items-center justify-center font-bold text-gray-700 text-lg border border-gray-100">
+            <div :class="[
+              'w-12 h-12 rounded-full flex items-center justify-center font-bold text-lg border',
+              contact.locked ? 'bg-gray-100 text-gray-400 border-gray-200' : 'bg-gray-50 text-gray-700 border-gray-100'
+            ]">
               {{ contact.name.charAt(0).toUpperCase() }}
             </div>
             <div class="text-right">
-               <span class="text-xs font-medium bg-gray-100 px-2 py-1 rounded text-gray-600">Configurer →</span>
+              <span v-if="contact.locked" class="text-xs font-medium bg-purple-100 px-2 py-1 rounded text-purple-600 inline-flex items-center gap-1">
+                <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                </svg>
+                PRO
+              </span>
+              <span v-else class="text-xs font-medium bg-gray-100 px-2 py-1 rounded text-gray-600">Configurer →</span>
             </div>
           </div>
-          
-          <h3 class="font-bold text-lg mb-1">{{ contact.name }}</h3>
-          <p class="text-sm text-gray-500 font-mono truncate">{{ contact.email }}</p>
+
+          <h3 :class="['font-bold text-lg mb-1', contact.locked ? 'text-gray-400' : '']">{{ contact.name }}</h3>
+          <p :class="['text-sm font-mono truncate', contact.locked ? 'text-gray-300' : 'text-gray-500']">{{ contact.email }}</p>
         </NuxtLink>
       </div>
     </main>
@@ -90,26 +135,60 @@ const auth = useAuthStore()
 const config = useRuntimeConfig()
 const { user } = storeToRefs(auth)
 
-const { data: contacts, pending } = await useFetch(`${config.public.apiBase}/contacts`, {
+const { data: contacts, pending, refresh: refreshContacts } = await useFetch(`${config.public.apiBase}/contacts`, {
   headers: { Authorization: `Bearer ${auth.token}` }
 })
+
+const showSelectModal = ref(false)
+const selectedContactId = ref(null)
+const settingActive = ref(false)
+
+// Show selection modal if FREE user with >1 contacts and no activeContactId
+watch([contacts, user], () => {
+  if (
+    user.value?.plan === 'free' &&
+    contacts.value?.length > 1 &&
+    !user.value?.activeContactId
+  ) {
+    showSelectModal.value = true
+  }
+}, { immediate: true })
+
+async function selectActiveContact(contactId) {
+  settingActive.value = true
+  selectedContactId.value = contactId
+  try {
+    await $fetch(`${config.public.apiBase}/contacts/${contactId}/set-active`, {
+      method: 'POST',
+      headers: { Authorization: `Bearer ${auth.token}` }
+    })
+    await auth.refreshUser()
+    await refreshContacts()
+    showSelectModal.value = false
+  } catch (e) {
+    console.error('Failed to set active contact:', e)
+  } finally {
+    settingActive.value = false
+  }
+}
+
+function showLockedMessage() {
+  alert('Ce contact est bloqué. Passez à PRO pour débloquer tous vos contacts.')
+}
 
 // Sync subscription status from Stripe (handles return from Portal without webhooks)
 onMounted(async () => {
   if (auth.user?.plan === 'pro' && auth.token) {
-    console.log('[dashboard] Syncing subscription from Stripe...')
     try {
-      const result = await $fetch(`${config.public.apiBase}/stripe/sync-subscription`, {
+      await $fetch(`${config.public.apiBase}/stripe/sync-subscription`, {
         method: 'POST',
         headers: { Authorization: `Bearer ${auth.token}` }
       })
-      console.log('[dashboard] Sync result:', result)
       await auth.refreshUser()
+      await refreshContacts()
     } catch (e) {
-      console.error('[dashboard] Sync failed:', e)
+      // Silent fail
     }
-  } else {
-    console.log('[dashboard] Skipping sync — plan:', auth.user?.plan, 'token:', !!auth.token)
   }
 })
 
