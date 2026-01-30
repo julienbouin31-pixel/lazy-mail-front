@@ -11,7 +11,7 @@
 
       <h1 class="text-2xl font-bold mb-3">Paiement réussi !</h1>
       <p class="text-gray-600 mb-8">
-        Bienvenue dans LazyMail PRO ! Vous avez maintenant accès à des contacts illimités.
+        Bienvenue dans Fit my mail PRO ! Vous avez maintenant accès à des contacts illimités.
       </p>
 
       <NuxtLink

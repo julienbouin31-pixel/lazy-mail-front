@@ -10,7 +10,7 @@
         </div>
         <h2 class="text-xl font-bold mb-2">Connexion réussie !</h2>
         <p class="text-gray-600 text-sm mb-4">
-          Vous pouvez fermer cet onglet et retourner à l'extension LazyMail.
+          Vous pouvez fermer cet onglet et retourner à l'extension Fit my mail.
         </p>
         <p class="text-xs text-gray-400">
           Cet onglet se fermera automatiquement...
@@ -87,22 +87,22 @@ onMounted(async () => {
     if (!extensionReady) {
       // Extension not detected - show manual instructions
       loading.value = false
-      error.value = 'Extension non détectée. Assurez-vous que l\'extension LazyMail est installée et activée.'
+      error.value = 'Extension non détectée. Assurez-vous que l\'extension Fit my mail est installée et activée.'
       return
     }
 
     // Send token to extension via postMessage
     // The extension's content script will listen for this
     window.postMessage({
-      type: 'LAZYMAIL_AUTH_SUCCESS',
+      type: 'FITMYMAIL_AUTH_SUCCESS',
       token,
       user
     }, '*')
 
     // Also try to send via BroadcastChannel (backup method)
     try {
-      const channel = new BroadcastChannel('lazymail_auth')
-      channel.postMessage({ type: 'LAZYMAIL_AUTH_SUCCESS', token, user })
+      const channel = new BroadcastChannel('fitmymail_auth')
+      channel.postMessage({ type: 'FITMYMAIL_AUTH_SUCCESS', token, user })
       channel.close()
     } catch (e) {
       // BroadcastChannel not supported, that's ok
@@ -140,7 +140,7 @@ function waitForExtension(): Promise<boolean> {
     const maxAttempts = 10
 
     const handler = (event: MessageEvent) => {
-      if (event.data?.type === 'LAZYMAIL_EXTENSION_READY') {
+      if (event.data?.type === 'FITMYMAIL_EXTENSION_READY') {
         window.removeEventListener('message', handler)
         resolve(true)
       }
@@ -149,7 +149,7 @@ function waitForExtension(): Promise<boolean> {
     window.addEventListener('message', handler)
 
     // Check if already ready
-    window.postMessage({ type: 'LAZYMAIL_EXTENSION_READY_CHECK' }, '*')
+    window.postMessage({ type: 'FITMYMAIL_EXTENSION_READY_CHECK' }, '*')
 
     // Retry a few times
     const interval = setInterval(() => {
@@ -159,7 +159,7 @@ function waitForExtension(): Promise<boolean> {
         window.removeEventListener('message', handler)
         resolve(false)
       }
-      window.postMessage({ type: 'LAZYMAIL_EXTENSION_READY_CHECK' }, '*')
+      window.postMessage({ type: 'FITMYMAIL_EXTENSION_READY_CHECK' }, '*')
     }, 200)
 
     // Timeout after 2 seconds
@@ -174,7 +174,7 @@ function waitForExtension(): Promise<boolean> {
 function waitForConfirmation(): Promise<boolean> {
   return new Promise((resolve) => {
     const handler = (event: MessageEvent) => {
-      if (event.data?.type === 'LAZYMAIL_AUTH_RECEIVED') {
+      if (event.data?.type === 'FITMYMAIL_AUTH_RECEIVED') {
         window.removeEventListener('message', handler)
         resolve(true)
       }

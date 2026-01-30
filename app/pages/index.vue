@@ -13,7 +13,7 @@
       </h1>
 
       <p class="text-lg text-gray-600 mb-10 max-w-xl mx-auto leading-relaxed">
-        LazyMail apprend votre style d'écriture et rédige vos réponses automatiquement.
+        Fit my mail apprend votre style d'écriture et rédige vos réponses automatiquement.
         <span class="font-medium text-black">Arrêtez de taper, commencez à valider.</span>
       </p>
 
@@ -71,7 +71,7 @@
             </div>
             <h3 class="text-lg font-bold mb-2">Générez des réponses</h3>
             <p class="text-gray-600 text-sm leading-relaxed">
-              Recevez un email ? Cliquez "Générer" et LazyMail écrit dans <strong>votre style</strong>.
+              Recevez un email ? Cliquez "Générer" et Fit my mail écrit dans <strong>votre style</strong>.
             </p>
           </div>
         </div>
@@ -106,7 +106,7 @@
             <div>
               <h2 class="text-3xl font-bold mb-4">Votre style, votre ton</h2>
               <p class="text-gray-300 leading-relaxed mb-6">
-                LazyMail ne génère pas des réponses génériques. Il apprend <strong class="text-white">comment vous écrivez</strong> à chaque contact :
+                Fit my mail ne génère pas des réponses génériques. Il apprend <strong class="text-white">comment vous écrivez</strong> à chaque contact :
               </p>
               <ul class="space-y-3">
                 <li class="flex items-start gap-3">
@@ -191,7 +191,7 @@
           <div class="bg-white rounded-xl p-6 border border-gray-100">
             <h3 class="font-semibold mb-2">Est-ce que ça fonctionne en français ?</h3>
             <p class="text-gray-600 text-sm leading-relaxed">
-              Absolument ! LazyMail fonctionne dans toutes les langues. L'IA s'adapte à la langue dans laquelle vous écrivez à chaque contact.
+              Absolument ! Fit my mail fonctionne dans toutes les langues. L'IA s'adapte à la langue dans laquelle vous écrivez à chaque contact.
             </p>
           </div>
 
@@ -228,9 +228,9 @@
     <!-- Footer -->
     <footer class="border-t border-gray-100 py-8">
       <div class="max-w-5xl mx-auto px-6 flex flex-col sm:flex-row justify-between items-center gap-4">
-        <div class="font-bold text-lg">LazyMail.</div>
+        <div class="font-bold text-lg">Fit my mail.</div>
         <div class="text-sm text-gray-500">
-          © 2026 LazyMail. Tous droits réservés.
+          © 2026 Fit my mail. Tous droits réservés.
         </div>
       </div>
     </footer>

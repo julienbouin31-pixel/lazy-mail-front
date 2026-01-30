@@ -6,6 +6,6 @@
 
 <script setup>
 useHead({
-  titleTemplate: (title) => title ? `${title} - LazyMail` : 'LazyMail',
+  titleTemplate: (title) => title ? `${title} - Fit my mail` : 'Fit my mail',
 })
 </script>

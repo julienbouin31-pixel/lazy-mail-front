@@ -83,7 +83,7 @@
       <!-- Extension context info -->
       <div v-if="isFromExtension" class="mt-4 p-3 bg-blue-50 border border-blue-200 rounded-lg">
         <p class="text-xs text-blue-700 text-center">
-          Inscription depuis l'extension LazyMail
+          Inscription depuis l'extension Fit my mail
         </p>
       </div>
 

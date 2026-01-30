@@ -13,7 +13,7 @@
         <div class="bg-white rounded-2xl border border-gray-200 p-8">
           <div class="mb-6">
             <h2 class="text-xl font-bold mb-2">Gratuit</h2>
-            <p class="text-gray-500 text-sm">Pour découvrir LazyMail</p>
+            <p class="text-gray-500 text-sm">Pour découvrir Fit my mail</p>
           </div>
 
           <div class="mb-6">

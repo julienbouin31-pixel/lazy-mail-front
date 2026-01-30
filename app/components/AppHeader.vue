@@ -1,7 +1,7 @@
 <template>
   <header class="bg-white border-b border-gray-200 sticky top-0 z-50">
     <div class="max-w-6xl mx-auto px-6 h-16 flex justify-between items-center">
-      <NuxtLink to="/" class="font-bold text-xl tracking-tight">LazyMail.</NuxtLink>
+      <NuxtLink to="/" class="font-bold text-xl tracking-tight">Fit my mail.</NuxtLink>
 
       <!-- Connecté -->
       <div v-if="auth.isAuthenticated" class="flex items-center gap-4">
