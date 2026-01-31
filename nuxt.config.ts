@@ -25,7 +25,7 @@ export default defineNuxtConfig({
         { property: 'og:locale', content: 'fr_FR' },
         { property: 'og:title', content: 'Fit my mail — Ne répondez plus jamais à vos emails' },
         { property: 'og:description', content: 'L\'IA qui apprend votre style d\'écriture et rédige vos réponses email. Extension Chrome gratuite pour Gmail.' },
-        { property: 'og:url', content: 'https://fitmymail.com' },
+        { property: 'og:url', content: 'https://www.fitmymail.fr' },
         // Twitter Card
         { name: 'twitter:card', content: 'summary_large_image' },
         { name: 'twitter:title', content: 'Fit my mail — Ne répondez plus jamais à vos emails' },
@@ -33,7 +33,7 @@ export default defineNuxtConfig({
       ],
       link: [
         { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap' },
-        { rel: 'canonical', href: 'https://fitmymail.com' },
+        { rel: 'canonical', href: 'https://www.fitmymail.fr' },
         { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
       ],
       script: [

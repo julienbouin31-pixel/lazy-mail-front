@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://fitmymail.com/</loc>
+    <loc>https://www.fitmymail.fr/</loc>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://fitmymail.com/pricing</loc>
+    <loc>https://www.fitmymail.fr/pricing</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://fitmymail.com/login</loc>
+    <loc>https://www.fitmymail.fr/login</loc>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://fitmymail.com/register</loc>
+    <loc>https://www.fitmymail.fr/register</loc>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>

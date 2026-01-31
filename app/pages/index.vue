@@ -243,7 +243,7 @@ useSeoMeta({
   description: 'Fit my mail apprend votre style d\'écriture et rédige vos réponses email automatiquement. Extension Chrome gratuite pour Gmail. Arrêtez de taper, commencez à valider.',
   ogTitle: 'Fit my mail — Ne répondez plus jamais à vos emails',
   ogDescription: 'L\'IA qui apprend votre style d\'écriture et rédige vos réponses email. Extension Chrome gratuite pour Gmail.',
-  ogUrl: 'https://fitmymail.com',
+  ogUrl: 'https://www.fitmymail.fr',
   twitterTitle: 'Fit my mail — Ne répondez plus jamais à vos emails',
   twitterDescription: 'L\'IA qui apprend votre style d\'écriture et rédige vos réponses email. Extension Chrome gratuite pour Gmail.',
 })
