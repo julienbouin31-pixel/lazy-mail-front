@@ -7,7 +7,10 @@
       <div class="max-w-4xl mx-auto px-6 h-12 flex items-center gap-4">
         <NuxtLink to="/dashboard" class="text-gray-400 hover:text-black transition text-sm">← Retour</NuxtLink>
         <div class="h-4 w-px bg-gray-200"></div>
-        <div class="font-semibold text-sm" v-if="contact">{{ contact.name }} <span class="font-normal text-gray-400">({{ contact.email }})</span></div>
+        <div class="font-semibold text-sm" v-if="contact">
+          {{ contact.isGeneric ? 'Style Générique' : contact.name }}
+          <span v-if="!contact.isGeneric" class="font-normal text-gray-400">({{ contact.email }})</span>
+        </div>
       </div>
     </div>
 
@@ -43,7 +46,7 @@
 
       <section class="bg-white rounded-xl border border-gray-200 p-6 mb-8 shadow-sm">
         <h2 class="font-bold text-lg mb-4">Ajouter un exemple de style</h2>
-        <p class="text-sm text-gray-500 mb-4">Collez ici un email que vous avez déjà envoyé à ce contact. L'IA s'en servira pour imiter votre ton.</p>
+        <p class="text-sm text-gray-500 mb-4">{{ contact.isGeneric ? 'Collez ici un email que vous avez envoyé. L\'IA s\'en servira pour imiter votre style par défaut.' : 'Collez ici un email que vous avez déjà envoyé à ce contact. L\'IA s\'en servira pour imiter votre ton.' }}</p>
         
         <form @submit.prevent="addSnippet">
           <textarea 

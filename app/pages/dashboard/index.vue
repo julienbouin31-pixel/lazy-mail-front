@@ -69,9 +69,29 @@
         </div>
       </div>
 
+      <!-- Style Générique -->
+      <div v-if="genericContact" class="mb-8">
+        <h2 class="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-4">Style Générique</h2>
+        <NuxtLink
+          :to="`/dashboard/contact/${genericContact.id}`"
+          class="p-6 rounded-xl border bg-white border-gray-200 hover:border-black cursor-pointer group shadow-sm hover:shadow-md transition duration-200 block max-w-sm"
+        >
+          <div class="flex justify-between items-start mb-4">
+            <div class="w-12 h-12 rounded-full flex items-center justify-center font-bold text-lg border bg-indigo-50 text-indigo-600 border-indigo-100">
+              G
+            </div>
+            <span class="text-xs font-medium bg-indigo-100 px-2 py-1 rounded text-indigo-600">
+              {{ genericSnippetCount }} style{{ genericSnippetCount !== 1 ? 's' : '' }}
+            </span>
+          </div>
+          <h3 class="font-bold text-lg mb-1">Style Générique</h3>
+          <p class="text-sm text-gray-500">Utilisé comme style par défaut pour tous les contacts</p>
+        </NuxtLink>
+      </div>
+
       <div v-if="pending" class="text-center py-20 text-gray-400">Chargement...</div>
 
-      <div v-else-if="!contacts?.length" class="text-center py-20">
+      <div v-else-if="!contacts?.length && !genericContact" class="text-center py-20">
         <div class="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-6">
           <svg class="w-8 h-8 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
@@ -89,7 +109,8 @@
         </a>
       </div>
 
-      <div v-else class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <h2 v-if="contacts?.length" class="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-4">Contacts</h2>
+      <div v-if="contacts?.length" class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
         <!-- Contact actif (non-locké) -->
         <NuxtLink
           v-for="contact in contacts"
@@ -138,6 +159,21 @@ const { user } = storeToRefs(auth)
 const { data: contacts, pending, refresh: refreshContacts } = await useFetch(`${config.public.apiBase}/contacts`, {
   headers: { Authorization: `Bearer ${auth.token}` }
 })
+
+// Fetch generic contact
+const { data: genericContact } = await useFetch(`${config.public.apiBase}/contacts/generic`, {
+  headers: { Authorization: `Bearer ${auth.token}` }
+})
+
+const genericSnippetCount = computed(() => {
+  if (!genericContact.value?.id) return 0
+  return genericSnippetsData.value?.length || 0
+})
+
+const { data: genericSnippetsData } = await useFetch(
+  () => genericContact.value?.id ? `${config.public.apiBase}/snippets/contact/${genericContact.value.id}` : null,
+  { headers: { Authorization: `Bearer ${auth.token}` } }
+)
 
 const showSelectModal = ref(false)
 const selectedContactId = ref(null)
