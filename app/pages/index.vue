@@ -225,15 +225,21 @@
       </div>
     </section>
 
-    <!-- Footer -->
+   
     <footer class="border-t border-gray-100 py-8">
-      <div class="max-w-5xl mx-auto px-6 flex flex-col sm:flex-row justify-between items-center gap-4">
-        <div class="font-bold text-lg">Fit my mail.</div>
-        <div class="text-sm text-gray-500">
-          © 2026 Fit my mail. Tous droits réservés.
-        </div>
+  <div class="max-w-5xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-4">
+    <div class="font-bold text-lg">Fit my mail.</div>
+    
+    <div class="flex flex-col md:flex-row items-center gap-4 md:gap-8">
+      <NuxtLink to="/privacy" class="text-sm text-gray-500 hover:text-black transition">
+        Confidentialité
+      </NuxtLink>
+      <div class="text-sm text-gray-500">
+        © 2026 Fit my mail. Tous droits réservés.
       </div>
-    </footer>
+    </div>
+  </div>
+</footer>
   </div>
 </template>
 
