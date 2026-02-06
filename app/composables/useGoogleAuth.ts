@@ -8,6 +8,7 @@ declare global {
 export function useGoogleAuth() {
   const config = useRuntimeConfig()
   const auth = useAuthStore()
+  const { t } = useI18n()
   const loading = ref(false)
   const error = ref('')
 
@@ -18,7 +19,7 @@ export function useGoogleAuth() {
     return new Promise((resolve) => {
       if (!window.google) {
         loading.value = false
-        const errorMsg = 'Google Sign-In non disponible'
+        const errorMsg = t('errors.googleNotAvailable')
         error.value = errorMsg
         resolve({ success: false, error: errorMsg })
         return
@@ -30,7 +31,7 @@ export function useGoogleAuth() {
         callback: async (response: any) => {
           if (response.error) {
             loading.value = false
-            const errorMsg = 'Connexion Google annulée'
+            const errorMsg = t('errors.googleCancelled')
             error.value = errorMsg
             resolve({ success: false, error: errorMsg })
             return
@@ -41,7 +42,7 @@ export function useGoogleAuth() {
           loading.value = false
 
           if (!result.success) {
-            error.value = result.error || 'Erreur de connexion Google'
+            error.value = result.error || t('errors.googleLoginError')
           }
 
           resolve(result)

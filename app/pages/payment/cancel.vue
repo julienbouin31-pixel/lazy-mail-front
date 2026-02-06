@@ -9,9 +9,9 @@
         </svg>
       </div>
 
-      <h1 class="text-2xl font-bold mb-3">Paiement annulé</h1>
+      <h1 class="text-2xl font-bold mb-3">{{ $t('payment.cancel.title') }}</h1>
       <p class="text-gray-600 mb-8">
-        Pas de souci ! Vous pouvez revenir quand vous voulez pour passer à PRO.
+        {{ $t('payment.cancel.description') }}
       </p>
 
       <div class="flex flex-col sm:flex-row gap-3 justify-center">
@@ -19,13 +19,13 @@
           to="/pricing"
           class="inline-flex items-center justify-center gap-2 bg-black text-white px-6 py-3 rounded-lg font-medium hover:bg-gray-800 transition"
         >
-          Revoir les offres
+          {{ $t('payment.cancel.seeOffers') }}
         </NuxtLink>
         <NuxtLink
           to="/dashboard"
           class="inline-flex items-center justify-center gap-2 bg-white text-gray-700 px-6 py-3 rounded-lg font-medium border border-gray-200 hover:bg-gray-50 transition"
         >
-          Retour au dashboard
+          {{ $t('payment.cancel.backToDashboard') }}
         </NuxtLink>
       </div>
     </div>

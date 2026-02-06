@@ -1,7 +1,7 @@
 <template>
   <div class="min-h-screen flex items-center justify-center bg-gray-50 px-4">
     <div class="w-full max-w-md bg-white border border-gray-200 p-8 rounded-xl shadow-sm">
-      <h2 class="text-2xl font-bold mb-6 text-center">Bon retour.</h2>
+      <h2 class="text-2xl font-bold mb-6 text-center">{{ $t('login.title') }}</h2>
 
       <!-- Error message -->
       <div v-if="error" class="mb-4 p-3 bg-red-50 border border-red-200 rounded-lg flex items-start gap-3">
@@ -25,7 +25,7 @@
           <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/>
           <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
         </svg>
-        {{ googleLoading ? 'Connexion...' : 'Continuer avec Google' }}
+        {{ googleLoading ? $t('login.googleLoading') : $t('login.googleButton') }}
       </button>
 
       <!-- Separator -->
@@ -34,13 +34,13 @@
           <div class="w-full border-t border-gray-200"></div>
         </div>
         <div class="relative flex justify-center text-sm">
-          <span class="px-4 bg-white text-gray-500">ou</span>
+          <span class="px-4 bg-white text-gray-500">{{ $t('login.or') }}</span>
         </div>
       </div>
 
       <form @submit.prevent="handleLogin" class="space-y-4">
         <div>
-          <label class="block text-sm font-medium mb-1">Email</label>
+          <label class="block text-sm font-medium mb-1">{{ $t('login.email') }}</label>
           <input
             v-model="form.email"
             type="email"
@@ -51,7 +51,7 @@
         </div>
 
         <div>
-          <label class="block text-sm font-medium mb-1">Mot de passe</label>
+          <label class="block text-sm font-medium mb-1">{{ $t('login.password') }}</label>
           <input
             v-model="form.password"
             type="password"
@@ -62,31 +62,33 @@
         </div>
 
         <button type="submit" :disabled="loading || googleLoading" class="w-full bg-black text-white py-2.5 rounded-lg font-medium hover:bg-gray-800 transition disabled:opacity-50 disabled:cursor-not-allowed">
-          {{ loading ? 'Connexion...' : 'Se connecter' }}
+          {{ loading ? $t('login.loading') : $t('login.submit') }}
         </button>
       </form>
 
       <!-- Extension context info -->
       <div v-if="isFromExtension" class="mt-4 p-3 bg-blue-50 border border-blue-200 rounded-lg">
         <p class="text-xs text-blue-700 text-center">
-          Connexion depuis l'extension Fit my mail
+          {{ $t('login.fromExtension') }}
         </p>
       </div>
 
       <p class="mt-4 text-center text-sm text-gray-500">
-        Pas encore de compte ? <NuxtLink :to="registerLink" class="text-black hover:underline">S'inscrire</NuxtLink>
+        {{ $t('login.noAccount') }} <NuxtLink :to="registerLink" class="text-black hover:underline">{{ $t('login.register') }}</NuxtLink>
       </p>
       <p class="mt-2 text-center text-sm">
-        <NuxtLink to="/" class="text-gray-400 hover:text-black">← Retour au site</NuxtLink>
+        <NuxtLink to="/" class="text-gray-400 hover:text-black">{{ $t('login.backToSite') }}</NuxtLink>
       </p>
     </div>
   </div>
 </template>
 
 <script setup>
+const { t } = useI18n()
+
 useSeoMeta({
-  title: 'Connexion — Fit my mail',
-  description: 'Connectez-vous à Fit my mail pour générer des réponses email dans votre style.',
+  title: () => t('seo.login.title'),
+  description: () => t('seo.login.description'),
   robots: 'noindex, nofollow',
 })
 
@@ -97,18 +99,14 @@ const form = reactive({ email: '', password: '' })
 const loading = ref(false)
 const error = ref('')
 
-// Check if coming from extension
 const isFromExtension = computed(() => route.query.from === 'extension')
 const registerLink = computed(() => isFromExtension.value ? '/register?from=extension' : '/register')
 
 function redirectAfterLogin() {
   if (isFromExtension.value && auth.token && auth.user) {
-    // Redirect to extension callback with token in hash fragment (more secure - not sent to server)
-    // Use window.location.href for full page reload to trigger content script injection
     const userParam = encodeURIComponent(JSON.stringify(auth.user))
     window.location.href = `/auth/extension-callback#token=${auth.token}&user=${userParam}`
   } else if (route.query.redirect) {
-    // Redirect to the specified page after login
     navigateTo(String(route.query.redirect))
   } else {
     navigateTo('/dashboard')
@@ -125,7 +123,7 @@ async function handleLogin() {
   if (result.success) {
     redirectAfterLogin()
   } else {
-    error.value = result.error || 'Une erreur est survenue'
+    error.value = result.error || t('login.error')
   }
 }
 
@@ -136,7 +134,7 @@ async function handleGoogleLogin() {
   if (result.success) {
     redirectAfterLogin()
   } else {
-    error.value = result.error || 'Erreur de connexion Google'
+    error.value = result.error || t('login.googleError')
   }
 }
 </script>

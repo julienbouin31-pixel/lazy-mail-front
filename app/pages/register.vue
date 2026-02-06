@@ -1,7 +1,7 @@
 <template>
   <div class="min-h-screen flex items-center justify-center bg-gray-50 px-4">
     <div class="w-full max-w-md bg-white border border-gray-200 p-8 rounded-xl shadow-sm">
-      <h2 class="text-2xl font-bold mb-6 text-center">Créer un compte</h2>
+      <h2 class="text-2xl font-bold mb-6 text-center">{{ $t('register.title') }}</h2>
 
       <!-- Error message -->
       <div v-if="error" class="mb-4 p-3 bg-red-50 border border-red-200 rounded-lg flex items-start gap-3">
@@ -25,7 +25,7 @@
           <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/>
           <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
         </svg>
-        {{ googleLoading ? 'Inscription...' : "S'inscrire avec Google" }}
+        {{ googleLoading ? $t('register.googleLoading') : $t('register.googleButton') }}
       </button>
 
       <!-- Separator -->
@@ -34,13 +34,13 @@
           <div class="w-full border-t border-gray-200"></div>
         </div>
         <div class="relative flex justify-center text-sm">
-          <span class="px-4 bg-white text-gray-500">ou</span>
+          <span class="px-4 bg-white text-gray-500">{{ $t('register.or') }}</span>
         </div>
       </div>
 
       <form @submit.prevent="handleRegister" class="space-y-4">
         <div>
-          <label class="block text-sm font-medium mb-1">Nom</label>
+          <label class="block text-sm font-medium mb-1">{{ $t('register.name') }}</label>
           <input
             v-model="form.name"
             type="text"
@@ -50,7 +50,7 @@
         </div>
 
         <div>
-          <label class="block text-sm font-medium mb-1">Email</label>
+          <label class="block text-sm font-medium mb-1">{{ $t('register.email') }}</label>
           <input
             v-model="form.email"
             type="email"
@@ -62,7 +62,7 @@
         </div>
 
         <div>
-          <label class="block text-sm font-medium mb-1">Mot de passe</label>
+          <label class="block text-sm font-medium mb-1">{{ $t('register.password') }}</label>
           <input
             v-model="form.password"
             type="password"
@@ -72,35 +72,37 @@
             minlength="6"
           />
           <p v-if="passwordError" class="mt-1 text-xs text-red-600">{{ passwordError }}</p>
-          <p v-else class="mt-1 text-xs text-gray-500">Minimum 6 caractères</p>
+          <p v-else class="mt-1 text-xs text-gray-500">{{ $t('register.passwordHint') }}</p>
         </div>
 
         <button type="submit" :disabled="loading || googleLoading" class="w-full bg-black text-white py-2.5 rounded-lg font-medium hover:bg-gray-800 transition disabled:opacity-50 disabled:cursor-not-allowed">
-          {{ loading ? 'Création...' : "S'inscrire" }}
+          {{ loading ? $t('register.loading') : $t('register.submit') }}
         </button>
       </form>
 
       <!-- Extension context info -->
       <div v-if="isFromExtension" class="mt-4 p-3 bg-blue-50 border border-blue-200 rounded-lg">
         <p class="text-xs text-blue-700 text-center">
-          Inscription depuis l'extension Fit my mail
+          {{ $t('register.fromExtension') }}
         </p>
       </div>
 
       <p class="mt-4 text-center text-sm text-gray-500">
-        Déjà un compte ? <NuxtLink :to="loginLink" class="text-black hover:underline">Se connecter</NuxtLink>
+        {{ $t('register.hasAccount') }} <NuxtLink :to="loginLink" class="text-black hover:underline">{{ $t('register.login') }}</NuxtLink>
       </p>
       <p class="mt-2 text-center text-sm">
-        <NuxtLink to="/" class="text-gray-400 hover:text-black">← Retour au site</NuxtLink>
+        <NuxtLink to="/" class="text-gray-400 hover:text-black">{{ $t('register.backToSite') }}</NuxtLink>
       </p>
     </div>
   </div>
 </template>
 
 <script setup>
+const { t } = useI18n()
+
 useSeoMeta({
-  title: 'Créer un compte — Fit my mail',
-  description: 'Inscrivez-vous gratuitement à Fit my mail. L\'IA qui rédige vos réponses email dans votre style.',
+  title: () => t('seo.register.title'),
+  description: () => t('seo.register.description'),
   robots: 'noindex, nofollow',
 })
 
@@ -113,14 +115,11 @@ const error = ref('')
 const emailError = ref('')
 const passwordError = ref('')
 
-// Check if coming from extension
 const isFromExtension = computed(() => route.query.from === 'extension')
 const loginLink = computed(() => isFromExtension.value ? '/login?from=extension' : '/login')
 
 function redirectAfterRegister() {
   if (isFromExtension.value && auth.token && auth.user) {
-    // Redirect to extension callback with token in hash fragment (more secure - not sent to server)
-    // Use window.location.href for full page reload to trigger content script injection
     const userParam = encodeURIComponent(JSON.stringify(auth.user))
     window.location.href = `/auth/extension-callback#token=${auth.token}&user=${userParam}`
   } else {
@@ -133,7 +132,7 @@ function validateForm() {
   passwordError.value = ''
 
   if (form.password.length < 6) {
-    passwordError.value = 'Le mot de passe doit contenir au moins 6 caractères'
+    passwordError.value = t('register.passwordError')
     return false
   }
 
@@ -152,11 +151,10 @@ async function handleRegister() {
   if (result.success) {
     redirectAfterRegister()
   } else {
-    // Check if it's an email-specific error
-    if (result.error?.includes('email') || result.error?.includes('compte')) {
+    if (result.error?.includes('email') || result.error?.includes('compte') || result.error?.includes('account')) {
       emailError.value = result.error
     } else {
-      error.value = result.error || 'Une erreur est survenue'
+      error.value = result.error || t('register.error')
     }
   }
 }
@@ -169,7 +167,7 @@ async function handleGoogleSignUp() {
   if (result.success) {
     redirectAfterRegister()
   } else {
-    error.value = result.error || 'Erreur lors de l\'inscription Google'
+    error.value = result.error || t('register.googleError')
   }
 }
 </script>

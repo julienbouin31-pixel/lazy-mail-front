@@ -9,16 +9,16 @@
         </svg>
       </div>
 
-      <h1 class="text-2xl font-bold mb-3">Paiement réussi !</h1>
+      <h1 class="text-2xl font-bold mb-3">{{ $t('payment.success.title') }}</h1>
       <p class="text-gray-600 mb-8">
-        Bienvenue dans Fit my mail PRO ! Vous avez maintenant accès à des contacts illimités.
+        {{ $t('payment.success.description') }}
       </p>
 
       <NuxtLink
         to="/dashboard"
         class="inline-flex items-center gap-2 bg-black text-white px-6 py-3 rounded-lg font-medium hover:bg-gray-800 transition"
       >
-        Accéder au dashboard
+        {{ $t('payment.success.cta') }}
         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
         </svg>
@@ -35,7 +35,6 @@ const auth = useAuthStore()
 const config = useRuntimeConfig()
 const route = useRoute()
 
-// Vérifier la session Stripe et mettre à jour le plan
 onMounted(async () => {
   const sessionId = route.query.session_id
   if (sessionId) {

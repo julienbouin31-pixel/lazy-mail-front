@@ -1,0 +1,317 @@
+{
+  "nav": {
+    "pricing": "Pricing",
+    "dashboard": "Dashboard",
+    "login": "Login",
+    "register": "Sign up",
+    "user": "User",
+    "manageSubscription": "Manage subscription",
+    "redirecting": "Redirecting...",
+    "upgradePro": "Upgrade to PRO",
+    "logout": "Logout"
+  },
+  "home": {
+    "badge": "Free Chrome Extension",
+    "heroTitle": "Never reply to\nyour emails again.",
+    "heroDescription": "Fit my mail learns your writing style and drafts your replies automatically.",
+    "heroHighlight": "Stop typing, start approving.",
+    "downloadExtension": "Download the extension",
+    "howItWorksCta": "How does it work?",
+    "steps": {
+      "badge": "In 3 simple steps",
+      "title": "How does it work?",
+      "step1Title": "Install the extension",
+      "step1Description": "Download the Chrome extension and sign in. It's free!",
+      "step2Title": "Scan 3 emails",
+      "step2Description": "Open 3 emails <strong>you wrote</strong> to a contact in your \"Sent\" folder.",
+      "step3Title": "Generate replies",
+      "step3Description": "Receive an email? Click \"Generate\" and Fit my mail writes in <strong>your style</strong>.",
+      "infoTitle": "Important for step 2",
+      "infoDescription": "Scan emails <strong>you wrote</strong>, not ones you received. Go to Gmail → \"Sent\" to find them."
+    },
+    "demo": {
+      "title": "Your style, your tone",
+      "description": "Fit my mail doesn't generate generic replies. It learns <strong class=\"text-white\">how you write</strong> to each contact:",
+      "feature1": "Formal with your boss, casual with your friends",
+      "feature2": "Your expressions, your punctuation, your signature",
+      "feature3": "Editable before sending, you stay in control",
+      "stylesCount": "3 saved styles",
+      "emailReceived": "Email received",
+      "emailContent": "\"Hey! Are you free Tuesday for lunch?\"",
+      "generating": "Generating...",
+      "generatedReply": "Generated reply",
+      "replyContent": "\"Hey Marie! Yeah absolutely, I'm free Tuesday noon. Where should we meet? Cheers\""
+    },
+    "styles": {
+      "title": "Two types of styles",
+      "subtitle": "Fit my mail adapts to how you communicate with each person.",
+      "generic": {
+        "title": "Generic Style",
+        "badge": "Default",
+        "description": "Your default writing style, used for all your contacts. Scan a few emails you've sent and the AI will learn your general tone.",
+        "feature1": "Automatically used for all contacts",
+        "feature2": "Ideal for getting started quickly",
+        "feature3": "Captures your natural tone"
+      },
+      "perContact": {
+        "title": "Per-Contact Style",
+        "badge": "Personalized",
+        "description": "A specific style for each contact. Scan emails sent to a particular person and the AI will adapt the tone specifically for them.",
+        "feature1": "Formal with clients, casual with friends",
+        "feature2": "More precise than the generic style",
+        "feature3": "Takes priority over the generic style"
+      }
+    },
+    "faq": {
+      "title": "Frequently asked questions",
+      "q1": "Why scan 3 emails per contact?",
+      "a1": "3 emails allow the AI to reliably understand your writing style: your tone, favorite expressions, and level of formality. Fewer would be insufficient, more would be tedious.",
+      "q2": "Are my emails secure?",
+      "a2": "Yes. We only store anonymized \"snippets\" of your writing style, never the full content of your emails. Your data is never shared.",
+      "q3": "Does it work in multiple languages?",
+      "a3": "Absolutely! Fit my mail works in all languages. The AI adapts to the language you use with each contact.",
+      "q4": "Is it really free?",
+      "a4": "The free plan allows 1 contact. For unlimited contacts, upgrade to the PRO plan at €7/month."
+    },
+    "cta": {
+      "title": "Ready to automate your emails?",
+      "description": "Join thousands of users who save time every day.",
+      "install": "Install the free extension",
+      "pricing": "See pricing"
+    }
+  },
+  "footer": {
+    "privacy": "Privacy",
+    "rights": "© 2026 Fit my mail. All rights reserved."
+  },
+  "pricing": {
+    "title": "Simple and transparent pricing",
+    "subtitle": "Choose the plan that fits you",
+    "free": {
+      "name": "Free",
+      "description": "To discover Fit my mail",
+      "price": "€0",
+      "period": "/month",
+      "feature1": "1 contact",
+      "feature2": "Unlimited reply generation",
+      "feature3": "Chrome Extension",
+      "cta": "Get started for free",
+      "current": "Current plan"
+    },
+    "premium": {
+      "badge": "Popular",
+      "name": "Premium",
+      "description": "For regular users",
+      "price": "€7",
+      "period": "/month",
+      "feature1": "Unlimited contacts",
+      "feature1Strong": true,
+      "feature2": "Unlimited reply generation",
+      "feature3": "Chrome Extension",
+      "feature4": "Priority support",
+      "cta": "Upgrade to Premium",
+      "manage": "Manage my subscription",
+      "redirecting": "Redirecting..."
+    },
+    "faq": {
+      "title": "Frequently asked questions",
+      "q1": "Can I cancel at any time?",
+      "a1": "Yes, you can cancel your subscription at any time. You'll keep access until the end of the paid period.",
+      "q2": "How does the contact limit work?",
+      "a2": "Each contact represents a person for whom you've saved writing style examples. The free plan allows 1 contact, the Premium plan offers unlimited contacts.",
+      "q3": "Is the payment secure?",
+      "a3": "Yes, all payments are processed by Stripe, the world leader in online payments. We never store your banking information."
+    },
+    "error": "An error occurred. Please try again."
+  },
+  "login": {
+    "title": "Welcome back.",
+    "googleButton": "Continue with Google",
+    "googleLoading": "Signing in...",
+    "or": "or",
+    "email": "Email",
+    "password": "Password",
+    "submit": "Sign in",
+    "loading": "Signing in...",
+    "fromExtension": "Signing in from the Fit my mail extension",
+    "noAccount": "Don't have an account?",
+    "register": "Sign up",
+    "backToSite": "← Back to site",
+    "error": "An error occurred",
+    "googleError": "Google login error"
+  },
+  "register": {
+    "title": "Create an account",
+    "googleButton": "Sign up with Google",
+    "googleLoading": "Signing up...",
+    "or": "or",
+    "name": "Name",
+    "email": "Email",
+    "password": "Password",
+    "passwordHint": "Minimum 6 characters",
+    "passwordError": "Password must be at least 6 characters",
+    "submit": "Sign up",
+    "loading": "Creating...",
+    "fromExtension": "Signing up from the Fit my mail extension",
+    "hasAccount": "Already have an account?",
+    "login": "Sign in",
+    "backToSite": "← Back to site",
+    "error": "An error occurred",
+    "googleError": "Google sign-up error"
+  },
+  "dashboard": {
+    "cancelBanner": "Your PRO subscription ends on {date}. You can reactivate it at any time.",
+    "reactivate": "Reactivate",
+    "upgradeBanner": "Free plan: 1 contact max. Upgrade to PRO for unlimited contacts!",
+    "seeOffers": "See offers",
+    "selectModal": {
+      "title": "Choose your active contact",
+      "description": "Your free plan is limited to 1 contact. Others will be locked but not deleted. Upgrade to PRO to unlock them all.",
+      "unlock": "Upgrade to PRO to unlock them all"
+    },
+    "title": "My Styles",
+    "description": "Manage snippets for each contact. The Chrome extension will use them to generate your replies.",
+    "genericStyle": "Generic Style",
+    "genericStyleDescription": "Used as the default style for all contacts",
+    "styleCount": "{count} style | {count} styles",
+    "loading": "Loading...",
+    "noContacts": "No contacts yet",
+    "noContactsDescription": "Start by using the Chrome extension on Gmail. Your contacts will appear here automatically to configure your reply styles.",
+    "downloadExtension": "Download the Chrome extension",
+    "contacts": "Contacts",
+    "configure": "Configure →",
+    "locked": "This contact is locked. Upgrade to PRO to unlock all your contacts."
+  },
+  "contact": {
+    "back": "← Back",
+    "genericStyle": "Generic Style",
+    "addTitle": "Add a style example",
+    "addDescriptionGeneric": "Paste an email you sent here. The AI will use it to mimic your default style.",
+    "addDescriptionContact": "Paste an email you already sent to this contact here. The AI will use it to mimic your tone.",
+    "placeholder": "Hey, thanks for your feedback. I'll look into it tomorrow...",
+    "submit": "Add this example",
+    "submitting": "Adding...",
+    "savedTitle": "Saved examples",
+    "loadingSnippets": "Loading snippets...",
+    "noSnippets": "No examples yet.",
+    "deleteConfirm": "Delete?",
+    "deleteButton": "Confirm",
+    "cancelButton": "Cancel",
+    "addError": "Error adding example",
+    "deleteError": "Unable to delete",
+    "locked": {
+      "title": "Contact locked",
+      "description": "This contact is locked because your free plan is limited to 1 contact. Upgrade to PRO to unlock all your contacts.",
+      "cta": "Upgrade to PRO"
+    }
+  },
+  "payment": {
+    "success": {
+      "title": "Payment successful!",
+      "description": "Welcome to Fit my mail PRO! You now have access to unlimited contacts.",
+      "cta": "Go to dashboard"
+    },
+    "cancel": {
+      "title": "Payment cancelled",
+      "description": "No worries! You can come back whenever you want to upgrade to PRO.",
+      "seeOffers": "See offers",
+      "backToDashboard": "Back to dashboard"
+    }
+  },
+  "extensionCallback": {
+    "success": {
+      "title": "Login successful!",
+      "description": "You can close this tab and return to the Fit my mail extension.",
+      "autoClose": "This tab will close automatically..."
+    },
+    "loading": {
+      "title": "Connecting...",
+      "description": "Please wait"
+    },
+    "error": {
+      "title": "Connection error",
+      "default": "An error occurred",
+      "retry": "Try again",
+      "missingToken": "Missing token",
+      "extensionNotDetected": "Extension not detected. Make sure the Fit my mail extension is installed and enabled.",
+      "tokenTransfer": "Error transferring the token"
+    }
+  },
+  "privacy": {
+    "title": "Privacy Policy",
+    "lastUpdated": "Last updated: January 31, 2026",
+    "section1": {
+      "title": "1. Introduction",
+      "content": "The privacy of your data is the absolute priority of <strong>Fit my mail</strong>. This policy describes how we collect, use, and protect your information when you use our Chrome extension and web application."
+    },
+    "section2": {
+      "title": "2. Data we collect",
+      "intro": "We limit collection to data strictly necessary for the service to function:",
+      "item1": "<strong>Account information:</strong> Your email address and password (stored encrypted/hashed).",
+      "item2": "<strong>Learning data (Snippets):</strong> The content of emails you choose to <strong>manually</strong> scan via the extension. These texts are only used to create your style profile.",
+      "item3": "<strong>Technical data:</strong> Session cookies to maintain your connection."
+    },
+    "section3": {
+      "title": "3. How we use your data",
+      "intro": "Your data is used exclusively to:",
+      "item1": "Allow you to log in to your account.",
+      "item2": "Train the artificial intelligence to recognize and mimic your personal writing style.",
+      "item3": "Generate reply drafts in Gmail (the context of the received email is processed ephemerally for generation and is not stored permanently)."
+    },
+    "section4": {
+      "title": "4. Security and Storage",
+      "intro": "The security of your data is paramount:",
+      "item1": "Your passwords are encrypted (hashed) and never stored in plain text.",
+      "item2": "Communications between the extension and our servers are encrypted via HTTPS (TLS).",
+      "item3": "Your data is never sold to third parties."
+    },
+    "section5": {
+      "title": "5. Your rights (GDPR)",
+      "content": "Under the GDPR, you have the right to access, rectify, and delete your data. You can delete your saved styles (snippets) directly from your Dashboard. To permanently delete your account and all associated data, please contact us."
+    },
+    "section6": {
+      "title": "6. Contact",
+      "content": "For any questions regarding this privacy policy, you can contact us at:"
+    }
+  },
+  "errors": {
+    "invalidCredentials": "Invalid email or password",
+    "userAlreadyExists": "An account with this email already exists",
+    "unauthorized": "Unauthorized",
+    "invalidGoogleToken": "Invalid Google token",
+    "failedGoogleValidation": "Failed to validate Google token",
+    "loginError": "Login error",
+    "registerError": "Registration error",
+    "googleLoginError": "Google login error",
+    "googleNotAvailable": "Google Sign-In not available",
+    "googleCancelled": "Google sign-in cancelled"
+  },
+  "seo": {
+    "home": {
+      "title": "Fit my mail — Never reply to your emails again",
+      "description": "Fit my mail learns your writing style and drafts your email replies automatically. Free Chrome extension for Gmail. Stop typing, start approving.",
+      "ogDescription": "The AI that learns your writing style and drafts your email replies. Free Chrome extension for Gmail."
+    },
+    "pricing": {
+      "title": "Pricing — Fit my mail",
+      "description": "Free plan with 1 contact or Premium at €7/month for unlimited contacts. Generate email replies in your style with Fit my mail.",
+      "ogDescription": "Free plan or Premium at €7/month. Generate email replies in your style."
+    },
+    "login": {
+      "title": "Login — Fit my mail",
+      "description": "Log in to Fit my mail to generate email replies in your style."
+    },
+    "register": {
+      "title": "Create an account — Fit my mail",
+      "description": "Sign up for free to Fit my mail. The AI that writes your email replies in your style."
+    },
+    "privacy": {
+      "title": "Privacy Policy — Fit my mail",
+      "description": "Fit my mail privacy policy. Transparency about how your email data is used and secured."
+    },
+    "structuredData": {
+      "description": "Chrome extension that learns your writing style and automatically drafts your email replies on Gmail.",
+      "offerDescription": "Free plan with 1 contact"
+    }
+  }
+}

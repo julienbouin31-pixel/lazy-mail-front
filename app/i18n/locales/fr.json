@@ -1,0 +1,317 @@
+{
+  "nav": {
+    "pricing": "Tarifs",
+    "dashboard": "Dashboard",
+    "login": "Connexion",
+    "register": "S'inscrire",
+    "user": "Utilisateur",
+    "manageSubscription": "Gérer mon abonnement",
+    "redirecting": "Redirection...",
+    "upgradePro": "Passer à PRO",
+    "logout": "Déconnexion"
+  },
+  "home": {
+    "badge": "Extension Chrome gratuite",
+    "heroTitle": "Ne répondez plus jamais\nà vos emails.",
+    "heroDescription": "Fit my mail apprend votre style d'écriture et rédige vos réponses automatiquement.",
+    "heroHighlight": "Arrêtez de taper, commencez à valider.",
+    "downloadExtension": "Télécharger l'extension",
+    "howItWorksCta": "Comment ça marche ?",
+    "steps": {
+      "badge": "En 3 étapes simples",
+      "title": "Comment ça marche ?",
+      "step1Title": "Installez l'extension",
+      "step1Description": "Téléchargez l'extension Chrome et connectez-vous. C'est gratuit !",
+      "step2Title": "Scannez 3 emails",
+      "step2Description": "Ouvrez 3 emails <strong>que vous avez écrits</strong> à un contact dans vos \"Messages envoyés\".",
+      "step3Title": "Générez des réponses",
+      "step3Description": "Recevez un email ? Cliquez \"Générer\" et Fit my mail écrit dans <strong>votre style</strong>.",
+      "infoTitle": "Important pour l'étape 2",
+      "infoDescription": "Scannez des emails <strong>que vous avez rédigés</strong>, pas ceux que vous avez reçus. Allez dans Gmail → \"Messages envoyés\" pour les trouver."
+    },
+    "demo": {
+      "title": "Votre style, votre ton",
+      "description": "Fit my mail ne génère pas des réponses génériques. Il apprend <strong class=\"text-white\">comment vous écrivez</strong> à chaque contact :",
+      "feature1": "Formel avec votre patron, décontracté avec vos amis",
+      "feature2": "Vos expressions, votre ponctuation, votre signature",
+      "feature3": "Modifiable avant envoi, vous gardez le contrôle",
+      "stylesCount": "3 styles enregistrés",
+      "emailReceived": "Email reçu",
+      "emailContent": "\"Salut ! Tu es dispo mardi pour le déjeuner ?\"",
+      "generating": "Génération...",
+      "generatedReply": "Réponse générée",
+      "replyContent": "\"Hey Marie ! Oui carrément, je suis dispo mardi midi. On se retrouve où ? Bises\""
+    },
+    "styles": {
+      "title": "Deux types de styles",
+      "subtitle": "Fit my mail s'adapte à votre façon de communiquer avec chaque personne.",
+      "generic": {
+        "title": "Style Générique",
+        "badge": "Par défaut",
+        "description": "Votre style d'écriture par défaut, utilisé pour tous vos contacts. Scannez quelques emails que vous avez envoyés et l'IA apprendra votre ton général.",
+        "feature1": "Utilisé automatiquement pour tous les contacts",
+        "feature2": "Idéal pour commencer rapidement",
+        "feature3": "Capture votre ton naturel"
+      },
+      "perContact": {
+        "title": "Style par Contact",
+        "badge": "Personnalisé",
+        "description": "Un style spécifique pour chaque contact. Scannez des emails envoyés à une personne en particulier et l'IA adaptera le ton spécialement pour elle.",
+        "feature1": "Formel avec les clients, décontracté avec les amis",
+        "feature2": "Plus précis que le style générique",
+        "feature3": "Prioritaire sur le style générique"
+      }
+    },
+    "faq": {
+      "title": "Questions fréquentes",
+      "q1": "Pourquoi scanner 3 emails par contact ?",
+      "a1": "3 emails permettent à l'IA de comprendre votre style d'écriture de façon fiable : votre ton, vos expressions favorites, votre niveau de formalité. Moins serait insuffisant, plus serait fastidieux.",
+      "q2": "Mes emails sont-ils sécurisés ?",
+      "a2": "Oui. Nous ne stockons que des \"snippets\" anonymisés de votre style d'écriture, jamais le contenu complet de vos emails. Vos données ne sont jamais partagées.",
+      "q3": "Est-ce que ça fonctionne en français ?",
+      "a3": "Absolument ! Fit my mail fonctionne dans toutes les langues. L'IA s'adapte à la langue dans laquelle vous écrivez à chaque contact.",
+      "q4": "C'est vraiment gratuit ?",
+      "a4": "Le plan gratuit permet 1 contact. Pour un nombre illimité de contacts, passez au plan PRO à 7€/mois."
+    },
+    "cta": {
+      "title": "Prêt à automatiser vos emails ?",
+      "description": "Rejoignez des milliers d'utilisateurs qui gagnent du temps chaque jour.",
+      "install": "Installer l'extension gratuite",
+      "pricing": "Voir les tarifs"
+    }
+  },
+  "footer": {
+    "privacy": "Confidentialité",
+    "rights": "© 2026 Fit my mail. Tous droits réservés."
+  },
+  "pricing": {
+    "title": "Tarifs simples et transparents",
+    "subtitle": "Choisissez le plan qui vous convient",
+    "free": {
+      "name": "Gratuit",
+      "description": "Pour découvrir Fit my mail",
+      "price": "0€",
+      "period": "/mois",
+      "feature1": "1 contact",
+      "feature2": "Génération illimitée de réponses",
+      "feature3": "Extension Chrome",
+      "cta": "Commencer gratuitement",
+      "current": "Plan actuel"
+    },
+    "premium": {
+      "badge": "Populaire",
+      "name": "Premium",
+      "description": "Pour les utilisateurs réguliers",
+      "price": "7€",
+      "period": "/mois",
+      "feature1": "Contacts illimités",
+      "feature1Strong": true,
+      "feature2": "Génération illimitée de réponses",
+      "feature3": "Extension Chrome",
+      "feature4": "Support prioritaire",
+      "cta": "Passer à Premium",
+      "manage": "Gérer mon abonnement",
+      "redirecting": "Redirection..."
+    },
+    "faq": {
+      "title": "Questions fréquentes",
+      "q1": "Puis-je annuler à tout moment ?",
+      "a1": "Oui, vous pouvez annuler votre abonnement à tout moment. Vous conserverez l'accès jusqu'à la fin de la période payée.",
+      "q2": "Comment fonctionne la limite de contacts ?",
+      "a2": "Chaque contact représente une personne pour laquelle vous avez enregistré des exemples de style d'écriture. Le plan gratuit permet 1 contact, le plan Premium offre des contacts illimités.",
+      "q3": "Le paiement est-il sécurisé ?",
+      "a3": "Oui, tous les paiements sont traités par Stripe, leader mondial du paiement en ligne. Nous ne stockons jamais vos informations bancaires."
+    },
+    "error": "Une erreur est survenue. Veuillez réessayer."
+  },
+  "login": {
+    "title": "Bon retour.",
+    "googleButton": "Continuer avec Google",
+    "googleLoading": "Connexion...",
+    "or": "ou",
+    "email": "Email",
+    "password": "Mot de passe",
+    "submit": "Se connecter",
+    "loading": "Connexion...",
+    "fromExtension": "Connexion depuis l'extension Fit my mail",
+    "noAccount": "Pas encore de compte ?",
+    "register": "S'inscrire",
+    "backToSite": "← Retour au site",
+    "error": "Une erreur est survenue",
+    "googleError": "Erreur de connexion Google"
+  },
+  "register": {
+    "title": "Créer un compte",
+    "googleButton": "S'inscrire avec Google",
+    "googleLoading": "Inscription...",
+    "or": "ou",
+    "name": "Nom",
+    "email": "Email",
+    "password": "Mot de passe",
+    "passwordHint": "Minimum 6 caractères",
+    "passwordError": "Le mot de passe doit contenir au moins 6 caractères",
+    "submit": "S'inscrire",
+    "loading": "Création...",
+    "fromExtension": "Inscription depuis l'extension Fit my mail",
+    "hasAccount": "Déjà un compte ?",
+    "login": "Se connecter",
+    "backToSite": "← Retour au site",
+    "error": "Une erreur est survenue",
+    "googleError": "Erreur lors de l'inscription Google"
+  },
+  "dashboard": {
+    "cancelBanner": "Votre abonnement PRO se termine le {date}. Vous pouvez le réactiver à tout moment.",
+    "reactivate": "Réactiver",
+    "upgradeBanner": "Plan gratuit : 1 contact max. Passez à PRO pour des contacts illimités !",
+    "seeOffers": "Voir les offres",
+    "selectModal": {
+      "title": "Choisissez votre contact actif",
+      "description": "Votre plan gratuit est limité à 1 contact. Les autres seront bloqués mais pas supprimés. Passez à PRO pour tous les débloquer.",
+      "unlock": "Passer à PRO pour tous les débloquer"
+    },
+    "title": "Mes Styles",
+    "description": "Gérez les snippets pour chaque contact. L'extension Chrome les utilisera pour générer vos réponses.",
+    "genericStyle": "Style Générique",
+    "genericStyleDescription": "Utilisé comme style par défaut pour tous les contacts",
+    "styleCount": "{count} style | {count} styles",
+    "loading": "Chargement...",
+    "noContacts": "Aucun contact pour l'instant",
+    "noContactsDescription": "Commencez par utiliser l'extension Chrome sur Gmail. Vos contacts apparaîtront ici automatiquement pour configurer vos styles de réponse.",
+    "downloadExtension": "Télécharger l'extension Chrome",
+    "contacts": "Contacts",
+    "configure": "Configurer →",
+    "locked": "Ce contact est bloqué. Passez à PRO pour débloquer tous vos contacts."
+  },
+  "contact": {
+    "back": "← Retour",
+    "genericStyle": "Style Générique",
+    "addTitle": "Ajouter un exemple de style",
+    "addDescriptionGeneric": "Collez ici un email que vous avez envoyé. L'IA s'en servira pour imiter votre style par défaut.",
+    "addDescriptionContact": "Collez ici un email que vous avez déjà envoyé à ce contact. L'IA s'en servira pour imiter votre ton.",
+    "placeholder": "Salut, merci pour ton retour. Je regarde ça demain...",
+    "submit": "Ajouter cet exemple",
+    "submitting": "Ajout...",
+    "savedTitle": "Exemples enregistrés",
+    "loadingSnippets": "Chargement des snippets...",
+    "noSnippets": "Aucun exemple pour le moment.",
+    "deleteConfirm": "Supprimer ?",
+    "deleteButton": "Confirmer",
+    "cancelButton": "Annuler",
+    "addError": "Erreur lors de l'ajout",
+    "deleteError": "Impossible de supprimer",
+    "locked": {
+      "title": "Contact bloqué",
+      "description": "Ce contact est bloqué car votre plan gratuit est limité à 1 contact. Passez à PRO pour débloquer tous vos contacts.",
+      "cta": "Passer à PRO"
+    }
+  },
+  "payment": {
+    "success": {
+      "title": "Paiement réussi !",
+      "description": "Bienvenue dans Fit my mail PRO ! Vous avez maintenant accès à des contacts illimités.",
+      "cta": "Accéder au dashboard"
+    },
+    "cancel": {
+      "title": "Paiement annulé",
+      "description": "Pas de souci ! Vous pouvez revenir quand vous voulez pour passer à PRO.",
+      "seeOffers": "Revoir les offres",
+      "backToDashboard": "Retour au dashboard"
+    }
+  },
+  "extensionCallback": {
+    "success": {
+      "title": "Connexion réussie !",
+      "description": "Vous pouvez fermer cet onglet et retourner à l'extension Fit my mail.",
+      "autoClose": "Cet onglet se fermera automatiquement..."
+    },
+    "loading": {
+      "title": "Connexion en cours...",
+      "description": "Veuillez patienter"
+    },
+    "error": {
+      "title": "Erreur de connexion",
+      "default": "Une erreur est survenue",
+      "retry": "Réessayer",
+      "missingToken": "Token manquant",
+      "extensionNotDetected": "Extension non détectée. Assurez-vous que l'extension Fit my mail est installée et activée.",
+      "tokenTransfer": "Erreur lors de la transmission du token"
+    }
+  },
+  "privacy": {
+    "title": "Politique de Confidentialité",
+    "lastUpdated": "Dernière mise à jour : 31 janvier 2026",
+    "section1": {
+      "title": "1. Introduction",
+      "content": "La confidentialité de vos données est la priorité absolue de <strong>Fit my mail</strong>. Cette politique décrit comment nous collectons, utilisons et protégeons vos informations lorsque vous utilisez notre extension Chrome et notre application web."
+    },
+    "section2": {
+      "title": "2. Les données que nous collectons",
+      "intro": "Nous limitons la collecte aux données strictement nécessaires au fonctionnement du service :",
+      "item1": "<strong>Informations de compte :</strong> Votre adresse email et votre mot de passe (qui est stocké de manière chiffrée/hashée).",
+      "item2": "<strong>Données d'apprentissage (Snippets) :</strong> Le contenu des emails que vous choisissez <strong>manuellement</strong> de scanner via l'extension. Ces textes servent uniquement à créer votre profil de style.",
+      "item3": "<strong>Données techniques :</strong> Cookies de session pour maintenir votre connexion."
+    },
+    "section3": {
+      "title": "3. Utilisation de vos données",
+      "intro": "Vos données sont utilisées exclusivement pour :",
+      "item1": "Vous permettre de vous connecter à votre compte.",
+      "item2": "Entraîner l'intelligence artificielle à reconnaître et imiter votre style d'écriture personnel.",
+      "item3": "Générer des brouillons de réponse dans Gmail (le contexte de l'email reçu est traité de manière éphémère pour la génération et n'est pas stocké durablement)."
+    },
+    "section4": {
+      "title": "4. Sécurité et Stockage",
+      "intro": "La sécurité de vos données est primordiale :",
+      "item1": "Vos mots de passe sont chiffrés (hashés) et ne sont jamais stockés en clair.",
+      "item2": "Les communications entre l'extension et nos serveurs sont chiffrées via HTTPS (TLS).",
+      "item3": "Vos données ne sont jamais vendues à des tiers."
+    },
+    "section5": {
+      "title": "5. Vos droits (RGPD)",
+      "content": "Conformément au RGPD, vous disposez d'un droit d'accès, de rectification et de suppression de vos données. Vous pouvez supprimer vos styles enregistrés (snippets) directement depuis votre Dashboard. Pour supprimer définitivement votre compte et toutes les données associées, contactez-nous."
+    },
+    "section6": {
+      "title": "6. Contact",
+      "content": "Pour toute question concernant cette politique de confidentialité, vous pouvez nous contacter à :"
+    }
+  },
+  "errors": {
+    "invalidCredentials": "Email ou mot de passe incorrect",
+    "userAlreadyExists": "Un compte avec cet email existe déjà",
+    "unauthorized": "Non autorisé",
+    "invalidGoogleToken": "Token Google invalide",
+    "failedGoogleValidation": "Échec de validation du token Google",
+    "loginError": "Erreur de connexion",
+    "registerError": "Erreur lors de l'inscription",
+    "googleLoginError": "Erreur de connexion Google",
+    "googleNotAvailable": "Google Sign-In non disponible",
+    "googleCancelled": "Connexion Google annulée"
+  },
+  "seo": {
+    "home": {
+      "title": "Fit my mail — Ne répondez plus jamais à vos emails",
+      "description": "Fit my mail apprend votre style d'écriture et rédige vos réponses email automatiquement. Extension Chrome gratuite pour Gmail. Arrêtez de taper, commencez à valider.",
+      "ogDescription": "L'IA qui apprend votre style d'écriture et rédige vos réponses email. Extension Chrome gratuite pour Gmail."
+    },
+    "pricing": {
+      "title": "Tarifs — Fit my mail",
+      "description": "Plan gratuit avec 1 contact ou Premium à 7€/mois pour des contacts illimités. Générez des réponses email dans votre style avec Fit my mail.",
+      "ogDescription": "Plan gratuit ou Premium à 7€/mois. Générez des réponses email dans votre style."
+    },
+    "login": {
+      "title": "Connexion — Fit my mail",
+      "description": "Connectez-vous à Fit my mail pour générer des réponses email dans votre style."
+    },
+    "register": {
+      "title": "Créer un compte — Fit my mail",
+      "description": "Inscrivez-vous gratuitement à Fit my mail. L'IA qui rédige vos réponses email dans votre style."
+    },
+    "privacy": {
+      "title": "Politique de Confidentialité — Fit my mail",
+      "description": "Politique de confidentialité de Fit my mail. Transparence sur l'utilisation de vos données emails et la sécurité."
+    },
+    "structuredData": {
+      "description": "Extension Chrome qui apprend votre style d'écriture et rédige vos réponses email automatiquement sur Gmail.",
+      "offerDescription": "Plan gratuit avec 1 contact"
+    }
+  }
+}

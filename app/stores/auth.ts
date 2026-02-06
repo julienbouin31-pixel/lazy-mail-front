@@ -8,8 +8,16 @@ export const useAuthStore = defineStore('auth', () => {
   const user = useState('auth_user', () => null)
   const config = useRuntimeConfig()
 
-  // Vérifie si on est connecté
   const isAuthenticated = computed(() => !!token.value)
+
+  function getTranslator() {
+    try {
+      const { $i18n } = useNuxtApp()
+      return $i18n.t.bind($i18n)
+    } catch {
+      return (key: string) => key
+    }
+  }
 
   async function login(email: string, password: string): Promise<{ success: boolean; error?: string }> {
     try {
@@ -22,7 +30,7 @@ export const useAuthStore = defineStore('auth', () => {
       user.value = data.user
       return { success: true }
     } catch (error: any) {
-      const message = error?.data?.message || error?.message || 'Erreur de connexion'
+      const message = error?.data?.message || error?.message || ''
       return { success: false, error: translateError(message) }
     }
   }
@@ -38,7 +46,7 @@ export const useAuthStore = defineStore('auth', () => {
       user.value = data.user
       return { success: true }
     } catch (error: any) {
-      const message = error?.data?.message || error?.message || 'Erreur lors de l\'inscription'
+      const message = error?.data?.message || error?.message || ''
       return { success: false, error: translateError(message) }
     }
   }
@@ -54,20 +62,21 @@ export const useAuthStore = defineStore('auth', () => {
       user.value = data.user
       return { success: true }
     } catch (error: any) {
-      const message = error?.data?.message || error?.message || 'Erreur de connexion Google'
+      const message = error?.data?.message || error?.message || ''
       return { success: false, error: translateError(message) }
     }
   }
 
   function translateError(message: string): string {
+    const t = getTranslator()
     const translations: Record<string, string> = {
-      'Invalid credentials': 'Email ou mot de passe incorrect',
-      'User already exists': 'Un compte avec cet email existe déjà',
-      'Unauthorized': 'Non autorisé',
-      'Invalid Google token': 'Token Google invalide',
-      'Failed to validate Google token': 'Échec de validation du token Google',
+      'Invalid credentials': t('errors.invalidCredentials'),
+      'User already exists': t('errors.userAlreadyExists'),
+      'Unauthorized': t('errors.unauthorized'),
+      'Invalid Google token': t('errors.invalidGoogleToken'),
+      'Failed to validate Google token': t('errors.failedGoogleValidation'),
     }
-    return translations[message] || message
+    return translations[message] || message || t('errors.loginError')
   }
 
   async function refreshUser(): Promise<void> {
@@ -78,7 +87,6 @@ export const useAuthStore = defineStore('auth', () => {
       })
       user.value = data
     } catch (error) {
-      // Token invalide, déconnexion
       logout()
     }
   }
