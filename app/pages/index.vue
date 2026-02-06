@@ -17,7 +17,7 @@
       </p>
 
       <div class="flex flex-col sm:flex-row justify-center gap-4">
-        <a href="#" class="bg-black text-white px-8 py-3.5 rounded-xl font-medium text-base border border-black hover:-translate-y-0.5 hover:shadow-lg transition-all inline-flex items-center justify-center gap-3">
+        <a href="https://chromewebstore.google.com/detail/fit-my-mail/dgabbbhdpbdmpkohaehpffpghohklekp" target="_blank" rel="noopener" class="bg-black text-white px-8 py-3.5 rounded-xl font-medium text-base border border-black hover:-translate-y-0.5 hover:shadow-lg transition-all inline-flex items-center justify-center gap-3">
           <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
             <path d="M12 0C8.21 0 4.831 1.757 2.632 4.501l3.953 6.848A5.454 5.454 0 0 1 12 6.545h10.691A12 12 0 0 0 12 0zM1.931 5.47A11.943 11.943 0 0 0 0 12c0 6.012 4.42 10.991 10.189 11.864l3.953-6.847a5.45 5.45 0 0 1-6.865-2.29L1.931 5.47zm13.299 2.347l-3.953 6.847a5.456 5.456 0 0 1-4.346 2.881L3.072 23.4A11.943 11.943 0 0 0 12 24c6.627 0 12-5.373 12-12 0-1.903-.442-3.7-1.231-5.303L15.23 7.817zM12 16.364a4.364 4.364 0 1 1 0-8.728 4.364 4.364 0 0 1 0 8.728z"/>
           </svg>
@@ -30,6 +30,7 @@
           </svg>
         </a>
       </div>
+      <p class="text-sm text-gray-400 mt-4">{{ $t('home.chromeOnly') }}</p>
     </section>
 
     <!-- How it Works Section -->
@@ -228,6 +229,10 @@
             <h3 class="font-semibold mb-2">{{ $t('home.faq.q4') }}</h3>
             <p class="text-gray-600 text-sm leading-relaxed">{{ $t('home.faq.a4') }}</p>
           </div>
+          <div class="bg-white rounded-xl p-6 border border-gray-100">
+            <h3 class="font-semibold mb-2">{{ $t('home.faq.q5') }}</h3>
+            <p class="text-gray-600 text-sm leading-relaxed">{{ $t('home.faq.a5') }}</p>
+          </div>
         </div>
       </div>
     </section>
@@ -239,7 +244,7 @@
         <p class="text-gray-600 mb-8">{{ $t('home.cta.description') }}</p>
 
         <div class="flex flex-col sm:flex-row justify-center gap-4">
-          <a href="#" class="bg-black text-white px-8 py-3.5 rounded-xl font-medium text-base hover:-translate-y-0.5 hover:shadow-lg transition-all inline-flex items-center justify-center gap-3">
+          <a href="https://chromewebstore.google.com/detail/fit-my-mail/dgabbbhdpbdmpkohaehpffpghohklekp" target="_blank" rel="noopener" class="bg-black text-white px-8 py-3.5 rounded-xl font-medium text-base hover:-translate-y-0.5 hover:shadow-lg transition-all inline-flex items-center justify-center gap-3">
             <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
               <path d="M12 0C8.21 0 4.831 1.757 2.632 4.501l3.953 6.848A5.454 5.454 0 0 1 12 6.545h10.691A12 12 0 0 0 12 0zM1.931 5.47A11.943 11.943 0 0 0 0 12c0 6.012 4.42 10.991 10.189 11.864l3.953-6.847a5.45 5.45 0 0 1-6.865-2.29L1.931 5.47zm13.299 2.347l-3.953 6.847a5.456 5.456 0 0 1-4.346 2.881L3.072 23.4A11.943 11.943 0 0 0 12 24c6.627 0 12-5.373 12-12 0-1.903-.442-3.7-1.231-5.303L15.23 7.817zM12 16.364a4.364 4.364 0 1 1 0-8.728 4.364 4.364 0 0 1 0 8.728z"/>
             </svg>
@@ -249,6 +254,7 @@
             {{ $t('home.cta.pricing') }}
           </NuxtLink>
         </div>
+        <p class="text-sm text-gray-400 mt-4">{{ $t('home.chromeOnly') }}</p>
       </div>
     </section>
 

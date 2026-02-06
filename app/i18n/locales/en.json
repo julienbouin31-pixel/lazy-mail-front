@@ -71,8 +71,11 @@
       "q3": "Does it work in multiple languages?",
       "a3": "Absolutely! Fit my mail works in all languages. The AI adapts to the language you use with each contact.",
       "q4": "Is it really free?",
-      "a4": "The free plan allows 1 contact. For unlimited contacts, upgrade to the PRO plan at €7/month."
+      "a4": "The free plan allows 1 contact. For unlimited contacts, upgrade to the PRO plan at €7/month.",
+      "q5": "Does it work on Firefox or Safari?",
+      "a5": "For now, Fit my mail is only available on Google Chrome. Other browsers coming soon!"
     },
+    "chromeOnly": "Available on Gmail only",
     "cta": {
       "title": "Ready to automate your emails?",
       "description": "Join thousands of users who save time every day.",
